@@ -23,3 +23,5 @@ function! s:CommandCompletion(arg_lead, cmd_line, cursor_pos)
   call map(paths, "tlib#file#Relative(v:val, buffer_path)")
   return paths
 endfunction
+
+" TODO: maybe this command should be called :saverel ?
