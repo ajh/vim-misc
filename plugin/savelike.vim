@@ -1,3 +1,8 @@
+if exists('g:loaded_misc_savelike')
+  finish
+endif
+let g:loaded_misc_savelike = 1
+
 command! -nargs=1 -complete=customlist,<SID>CommandCompletion -bang SaveLike :call <SID>SaveLike(<f-args>, "<bang>")
 
 " Return a path relative to the current buffer's path
