@@ -1,12 +1,12 @@
-if exists('g:loaded_misc_savelike')
+if exists('g:loaded_misc_save_relative')
   finish
 endif
-let g:loaded_misc_savelike = 1
+let g:loaded_misc_save_relative = 1
 
-command! -nargs=1 -complete=customlist,<SID>CommandCompletion -bang SaveLike :call <SID>SaveLike(<f-args>, "<bang>")
+command! -nargs=1 -complete=customlist,<SID>CommandCompletion -bang SaveRelative :call <SID>SaveRelative(<f-args>, "<bang>")
 
-" Return a path relative to the current buffer's path
-function! s:SaveLike(path, bang)
+" Saves file to a path relative to the current buffer's path
+function! s:SaveRelative(path, bang)
   let new_path = tlib#file#Join(tlib#file#Split(s:BufferPath()) + [a:path])
 
   if a:bang ==# '!'
@@ -28,5 +28,3 @@ function! s:CommandCompletion(arg_lead, cmd_line, cursor_pos)
   call map(paths, "tlib#file#Relative(v:val, buffer_path)")
   return paths
 endfunction
-
-" TODO: maybe this command should be called :saverel ?
