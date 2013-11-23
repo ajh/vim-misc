@@ -10,9 +10,9 @@ function! s:SaveRelative(path, bang)
   let new_path = tlib#file#Join(tlib#file#Split(s:BufferPath()) + [a:path])
 
   if a:bang ==# '!'
-    execute "saveas! " . new_path
+    execute "saveas! " . fnameescape(new_path)
   else
-    execute "saveas " . new_path
+    execute "saveas "  . fnameescape(new_path)
   endif
 endfunction
 
